@@ -78,7 +78,7 @@ const CardSlider = () => {
                 <div className="relative rounded-lg shadow-md cursor-pointer border overflow-hidden w-[600px] h-60 flex-shrink-0">
                     {/* Custom navigation buttons */}
                     <button
-                        className="banner-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/80 text-white flex items-center justify-center"
+                        className="banner-prev cursor-pointer absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/80 text-white flex items-center justify-center"
                         aria-label="Previous"
                     >
                         {/* Left chevron */}
@@ -87,7 +87,7 @@ const CardSlider = () => {
                         </svg>
                     </button>
                     <button
-                        className="banner-next absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/80 text-white flex items-center justify-center"
+                        className="banner-next cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/80 text-white flex items-center justify-center"
                         aria-label="Next"
                     >
                         {/* Right chevron */}
