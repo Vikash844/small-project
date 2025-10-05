@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
@@ -39,6 +39,8 @@ const nextSlides = [
 
 
 const PromoSlider = () => {
+  const prevRef = useRef(null)
+  const nextRef = useRef(null)
   return (
     <>
       <section className="w-full mt-10 overflow-x-hidden">
@@ -78,12 +80,14 @@ const PromoSlider = () => {
         <div className="max-w-screen-xl mx-auto px-4 relative">
           {/* Custom nav buttons */}
           <button
+            ref={prevRef}
             className="hangouts-prev absolute left-0 top-1/2 -translate-y-1/2 -ml-3 z-10 bg-white text-gray-900 w-9 h-14 rounded-md shadow flex items-center justify-center border"
             aria-label="Previous"
           >
             <FaChevronLeft />
           </button>
           <button
+            ref={nextRef}
             className="hangouts-next absolute right-0 top-1/2 -translate-y-1/2 -mr-3 z-10 bg-white text-gray-900 w-9 h-14 rounded-md shadow flex items-center justify-center border"
             aria-label="Next"
           >
@@ -92,16 +96,29 @@ const PromoSlider = () => {
 
           <Swiper
             modules={[Navigation]}
-            navigation={{ prevEl: '.hangouts-prev', nextEl: '.hangouts-next' }}
             loop
-            slidesPerView={1.2}
-            spaceBetween={16}
+            slidesPerView={1}
+            spaceBetween={18}
             breakpoints={{
-              640: { slidesPerView: 2.2, spaceBetween: 16 },
-              768: { slidesPerView: 3.2, spaceBetween: 18 },
-              1024: { slidesPerView: 4.2, spaceBetween: 20 },
-              1280: { slidesPerView: 5.2, spaceBetween: 20 },
+              640: { slidesPerView: 2, spaceBetween: 16 },
+              768: { slidesPerView: 3, spaceBetween: 18 },
+              1024: { slidesPerView: 4, spaceBetween: 20 },
+              1280: { slidesPerView: 5, spaceBetween: 20 },
             }}
+            onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current
+              swiper.params.navigation.nextEl = nextRef.current
+            }}
+            onSwiper={(swiper) => {
+              setTimeout(() => {
+                swiper.params.navigation.prevEl = prevRef.current
+                swiper.params.navigation.nextEl = nextRef.current
+                swiper.navigation.destroy()
+                swiper.navigation.init()
+                swiper.navigation.update()
+              })
+            }}
+            navigation
             className="w-full"
           >
             {nextSlides.map((s) => (
