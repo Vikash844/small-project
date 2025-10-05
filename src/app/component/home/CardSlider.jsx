@@ -75,7 +75,7 @@ const CardSlider = () => {
         <>
             <div className="flex gap-4 p-4 max-w-screen-xl mx-auto">
                 {/* Left: Big banner slider */}
-                <div className="relative rounded-lg shadow-md border overflow-hidden w-[600px] h-60 flex-shrink-0">
+                <div className="relative rounded-lg shadow-md cursor-pointer border overflow-hidden w-[600px] h-60 flex-shrink-0">
                     {/* Custom navigation buttons */}
                     <button
                         className="banner-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/80 text-white flex items-center justify-center"
@@ -141,7 +141,7 @@ const CardSlider = () => {
                             <div className="mt-auto pt-4">
                                 {/* Default: round icon button */}
                                 <button
-                                    className="absolute bottom-4 left-4 bg-white/90 hover:bg-white text-black rounded-full w-10 h-10 flex items-center justify-center shadow transition-opacity duration-200 group-hover:opacity-0"
+                                    className="absolute bottom-4 left-4 bg-white/90 hover:bg-white text-black rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-600 group-hover:opacity-0 group-hover:translate-x-1"
                                     aria-label="Open"
                                     title="Open"
                                 >
@@ -149,9 +149,9 @@ const CardSlider = () => {
                                         <path fillRule="evenodd" d="M8.47 4.47a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06L13.94 12 8.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
                                     </svg>
                                 </button>
-                                {/* Hover: pill Explore button */}
+                                {/* Hover: pill Explore button with slide/scale animation */}
                                 <button
-                                    className="absolute bottom-4 left-3 bg-white text-black px-3 py-1.5 text-xs font-semibold rounded-full shadow transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+                                    className="absolute bottom-4 left-3 bg-white text-black px-3 py-1.5 text-xs font-semibold rounded-full shadow transition-all duration-300 opacity-0 translate-x-[-6px] scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100"
                                     aria-label="Explore"
                                     title="Explore"
                                 >
